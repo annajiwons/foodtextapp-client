@@ -121,7 +121,7 @@ const GiveFood = () => {
             name: name, 
             item: item, 
             item_type: itemType,
-            city: neighbourhood, 
+            neighbourhood: neighbourhood, 
             quantity: quantity,
             location: location,
             time: time,
@@ -130,12 +130,10 @@ const GiveFood = () => {
 
         let formData = new FormData();
         for (const key in data) {
-            console.log(key)
             formData.append(key, data[key]);
         }
-        console.log(data);
-        console.log(formData);
-        let response = await fetch(`${apiUrl}/sharefood` , {
+
+        fetch(`${apiUrl}/sharefood` , {
             method: 'POST',
             mode: 'no-cors',
             headers: {
@@ -143,11 +141,8 @@ const GiveFood = () => {
             },
             body: formData
         });
-        console.log(response);
-        event.preventDefault();
-        event.stopPropagation();
 
-        // setFormComplete(true);
+        setFormComplete(true);
     }
 
     if (isFormComplete) {

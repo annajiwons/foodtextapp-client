@@ -120,7 +120,7 @@ const GetFood = () => {
         const data = {
             name: name,
             item_type: itemType,
-            city: neighbourhood, // TODO make neighbourhood
+            neighbourhood: neighbourhood,
             phone: phoneNumber,
         }
 

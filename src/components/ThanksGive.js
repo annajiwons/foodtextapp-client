@@ -21,6 +21,7 @@ const Title = styled.h1`
 const StyledForm = styled(Form)`
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
+    margin-top: 15%;
     padding: 5%;
     width: 80%;
 `;
