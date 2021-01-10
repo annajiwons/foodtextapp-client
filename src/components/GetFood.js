@@ -22,7 +22,7 @@ const StyledLabel = styled(Form.Label)`
     font-family: monospace;
     font-size: 22px;
     font-weight: normal;
-    margin-top: 15px;
+    margin-top: 3px;
 `;
 
 const Row = styled.div`
@@ -35,7 +35,8 @@ const TopCommand = styled.div`
     font-size: 20px;
     font-weight: bolder;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 1%;
+    margin-top: 2%;
     text-align: center;
     width: 80%;
 `;
@@ -86,14 +87,14 @@ const Warn = styled(Form.Text)`
 const GetFood = () => {
     const [name, setName] = useState("");
     const [phoneNumber, setphoneNumber] = useState("");
-    const [location, setLocation] = useState("");
+    const [neighbourhood, setNeighbourhood] = useState("");
     const [itemType, setItemType] = useState("");
 
     const [isFormComplete, setFormComplete] = useState(false);
     const [triedSubmitting, setTriedSubmitting] = useState(false);
 
     const hasEmptyField = () => {
-        return itemType === "" || itemType === "Select" || name === "" || phoneNumber === "" || location === "";
+        return itemType === "" || itemType === "Select" || name === "" || phoneNumber === "" || neighbourhood === "";
     }
 
     const badPhoneNumber = () => {
@@ -119,7 +120,7 @@ const GetFood = () => {
         const data = {
             name: name,
             item_type: itemType,
-            city: location, // TODO make neighbourhood
+            city: neighbourhood, // TODO make neighbourhood
             phone: phoneNumber,
         }
 
@@ -156,9 +157,17 @@ const GetFood = () => {
                             One or more fields are empty.
                         </Warn>
                     }
-                    <Form.Group controlId="form.type">
+
+                    <Form.Group controlId="form.name">
                         <StyledLabel>
-                            Item Type
+                            Name
+                        </StyledLabel>
+                        <Form.Control onChange={e => setName(e.target.value)} value={name}></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId="form.itemType">
+                        <StyledLabel>
+                            Looking For...
                         </StyledLabel>
                         <Form.Control as='select' onChange={e => setItemType(e.target.value)} required value={itemType}>
                             <Option>Select</Option>
@@ -175,18 +184,12 @@ const GetFood = () => {
                         
                     </Form.Group>
 
-                    <Form.Group controlId="form.desc">
-                        <StyledLabel>
-                            First &amp; Last Name
-                        </StyledLabel>
-                        <Form.Control onChange={e => setName(e.target.value)} value={name}></Form.Control>
-                    </Form.Group>
                     
-                    <Form.Group controlId="form.quantity">
+                    <Form.Group controlId="form.phoneNumber">
                         <StyledLabel>
                             Phone Number
                         </StyledLabel>
-                        <Form.Control onChange={e => setphoneNumber(e.target.value)} value={phoneNumber}></Form.Control>
+                        <Form.Control placeholder="+1xxxxxxxxxx" onChange={e => setphoneNumber(e.target.value)} value={phoneNumber}></Form.Control>
                         {badPhoneNumber() &&
                             <Warn>
                                 Please enter +1 followed by a 10-digit phone number using only numbers.
@@ -194,12 +197,33 @@ const GetFood = () => {
                         }
                     </Form.Group>
 
-                    <Form.Group controlId="form.location">
+                    <Form.Group controlId="form.neighbourhood">
                         <StyledLabel>
-                            Address &amp; Postal Code
+                            Neighbourhood
                         </StyledLabel>
-                        <Form.Control as='textarea' onChange={e => setLocation(e.target.value)} value={location}></Form.Control>
+                        <Form.Control as='select' onChange={e => setNeighbourhood(e.target.value)} required value={neighbourhood}>
+                            <Option>Select</Option>
+                            <Option>Cambie Village</Option>
+                            <Option>Chinatown/Downtown EastSide</Option>
+                            <Option>Downtown Vancouver</Option>
+                            <Option>Grandview-Woodland</Option>
+                            <Option>Granville Island</Option>
+                            <Option>Kerrisdale</Option>
+                            <Option>Kitsilano</Option>
+                            <Option>Marpole</Option>
+                            <Option>Mount Pleasant</Option>
+                            <Option>South Granville</Option>
+                            <Option>Strathcona</Option>
+                            <Option>UBC</Option>
+                            <Option>West End</Option>
+                        </Form.Control>
+                        {(itemType === "" || itemType === "Select") &&
+                            <Warn>
+                                Please select a location.
+                            </Warn>
+                        }
                     </Form.Group>
+
                     <Submit type="submit" onClick={createGetFoodUser}>
                         Submit
                     </Submit>

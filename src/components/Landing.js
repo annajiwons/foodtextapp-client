@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from './Logo';
 
+const TopRow = styled.div`
+    margin: 10% 0 0 0;
+` ;
+
 const CenterContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 5%;
 `;
 
 const Title = styled.h1`
@@ -16,7 +20,7 @@ const Title = styled.h1`
     font-size: 78px;
     font-weight: bolder;
     line-height: 84px;
-`
+`;
 
 const Button = styled.button`
     border: 0px;
@@ -26,7 +30,7 @@ const Button = styled.button`
     font-size: 17px;
     font-weight: bold;
     letter-spacing: 1px;
-    margin: 4px 30px;  
+    margin: 4px 30px; 
     overflow: hidden;  
     padding: 20px 50px;
 
@@ -45,27 +49,27 @@ const Button = styled.button`
     &:focus{
         outline: none;
     }
-`
+`;
 
 const Landing = () => {
     return (
         <CenterContainer>
-            <row>
+            <TopRow>
                 <Logo />
-            </row>
-            <row>
+            </TopRow>
+            <div>
                 <Title>
                     surplus
                 </Title>
-            </row>
-            <row>
+            </div>
+            <div>
                 <Link to="/give">
                     <Button>SHARE FOOD</Button>
                 </Link>
                 <Link to="/get">
                     <Button>GET FOOD</Button>
                 </Link>
-            </row>
+            </div>
         </CenterContainer>
     );
   };

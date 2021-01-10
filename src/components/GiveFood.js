@@ -18,6 +18,7 @@ const StyledForm = styled(Form)`
     border-radius: 20px;
     padding: 5%;
     width: 100%;
+    margin-bottom: 2%;
 `;
 
 const StyledLabel = styled(Form.Label)`
@@ -38,7 +39,8 @@ const TopCommand = styled.div`
     font-size: 20px;
     font-weight: bolder;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 1%;
+    margin-top: 1%;
     text-align: center;
     width: 80%;
 `;
@@ -52,7 +54,7 @@ const Submit = styled.button`
     font-weight: bold;
     letter-spacing: 1px;
 
-    margin: 0 0 10px 0; 
+    margin: 0 0 1% 0; 
     position: relative;
     top: 100%;
     left: 50%;
@@ -101,7 +103,7 @@ const GiveFood = () => {
 
     const hasEmptyField = () => {
         return itemType === "" || itemType === "Select" || description === "" || time === "" || neighbourhood === "" 
-        || name ==="" || item === "" || neighbourhood === "Select" || neighbourhood === "";
+        || name ==="" || item === "" || neighbourhood === "Select" || neighbourhood === "" || location === "";
     }
 
     const submitForm = async (event) => {
@@ -212,18 +214,20 @@ const GiveFood = () => {
                     <Col>
                     <Form.Group controlId="form.quantity">
                         <StyledLabel>
-                            Item Quantity
+                            Quantity
                         </StyledLabel>
                         <Form.Control onChange={e => setQuantity(e.target.value)} type="number" min="0" value={quantity}></Form.Control>
                     </Form.Group>
                     </Col>
 
                     </Form.Row>
-
+                    
                     <Form.Group controlId="form.date">
-                        <StyledLabel>
-                            Pick-up Date &amp; Time
-                        </StyledLabel>
+                        <Form.Row>
+                            <StyledLabel>
+                                Pick-up Date &amp; Time
+                            </StyledLabel>
+                        </Form.Row>
                         <DateTimeRangePicker
                             disableClock={true}
                             format="y-MM-dd h:mm a"
