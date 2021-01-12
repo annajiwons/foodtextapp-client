@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
 
-
 const CenterContainer = styled.div`
     align-items: center;
     display: flex;
@@ -17,7 +16,8 @@ const Title = styled.h1`
     font-weight: bolder;
     line-height: 84px;
     text-align: center;
-`
+`;
+
 const StyledForm = styled(Form)`
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
@@ -32,11 +32,11 @@ const FeedBack = styled.div`
     font-size: 30px;
     font-weight: normal;
     text-align: center;
+`;
 
-`
+// TODO: refactor with thanksgive to one component
 
 const ThanksGet = () => {
-
     return (
         <CenterContainer>
             <StyledForm>
